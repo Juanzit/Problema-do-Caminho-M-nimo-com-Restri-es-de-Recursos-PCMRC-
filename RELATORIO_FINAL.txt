@@ -1,0 +1,32 @@
+=======================================================================================
+RELATÓRIO TÉCNICO: OTIMIZAÇÃO DE CAMINHO MÍNIMO COM RESTRIÇÃO DE RECURSOS
+=======================================================================================
+
+1. METODOLOGIA E REPRESENTAÇÃO
+---------------------------------------------------------------------------------------
+Para resolver a variante PCMRC (Problema do Caminho Mínimo com Restrição de Recursos),
+foi implementada a meta-heurística Simulated Annealing (Têmpera Simulada).
+
+* Representação: Lista dinâmica de nós visitados.
+* Vizinhança: Estratégia Cut-and-Reconnect.
+* Critério de Parada: T_min = 0.1 ou TimeLimit = 2s.
+* Comparação: Os resultados da meta-heurística são comparados com a Solução Inicial
+  (gerada aleatoriamente) para demonstrar a eficiência da otimização (GAP).
+
+2. RESULTADOS EXPERIMENTAIS
+---------------------------------------------------------------------------------------
+Nota: 'Inicial' é o custo da rota aleatória. 'Final' é o custo após o Simulated Annealing.
+'GAP' indica a porcentagem de redução de custo (melhoria) obtida.
+
+| Instância          | Nós  | Inicial    | Final(SA)  | GAP(%)    | Tempo(ms) | Status   |
+|--------------------|------|------------|------------|-----------|-----------|----------|
+| inst_pequena.txt   | 20   | 66.61999999999999 | 47.00999999999999 | 29,44%    | 60        | Viável   |
+| inst_media.txt     | 50   | 225.72999999999996 | 127.82000000000001 | 43,37%    | 55        | Viável   |
+| inst_grande.txt    | 100  | 265.77000000000004 | 127.11999999999999 | 52,17%    | 254       | Viável   |
+| inst_muito_grande.txt | 200  | 353.71999999999986 | 166.57     | 52,91%    | 108       | Viável   |
+
+3. ANÁLISE AUTOMÁTICA
+---------------------------------------------------------------------------------------
+O algoritmo processou 4 instâncias.
+Foi observada uma melhoria consistente (GAP positivo) em relação à solução aleatória inicial.
+Na maior instância (200 nós), o tempo foi de 108ms.
